@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 2 · Listening &amp; Reading</title>
+<style>
+  :root{
+    --ink:#1c2430;
+    --ink-soft:#5b6472;
+    --paper:#faf7f1;
+    --panel:#ffffff;
+    --line:#e8e1d3;
+    --navy:#16233b;
+    --navy-2:#223452;
+    --brass:#b8863b;
+    --brass-soft:#f3e6cd;
+    --teal:#2f6f68;
+    --teal-soft:#e2efec;
+    --rose:#a7473a;
+    --rose-soft:#f5e3df;
+    --ok:#2f7a4f;
+    --ok-soft:#e3f0e6;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Noto Serif",serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sans{font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;}
+  a{color:inherit;}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--navy);
+    color:#f2ede0;
+    padding:18px 20px 0 20px;
+    position:sticky;top:0;z-index:40;
+    box-shadow:0 6px 18px rgba(10,15,25,.18);
+  }
+  .topbar-inner{max-width:1080px;margin:0 auto;}
+  .brand{
+    display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;
+  }
+  .brand .mark{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-weight:800;letter-spacing:.14em;font-size:11px;
+    background:var(--brass);color:#20150a;
+    padding:4px 9px;border-radius:100px;
+  }
+  .brand h1{
+    font-size:20px;margin:0;font-weight:600;letter-spacing:.01em;
+  }
+  .brand .sub{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:12.5px;color:#b9c2d4;
+  }
+  .tabs{
+    display:flex;gap:4px;overflow-x:auto;
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{
+    flex:none;
+    background:transparent;border:none;color:#c3cbdb;
+    padding:10px 15px;font-size:13.5px;font-weight:600;
+    border-radius:10px 10px 0 0;cursor:pointer;
+    border-bottom:3px solid transparent;
+    white-space:nowrap;
+    transition:.15s;
+  }
+  .tab-btn:hover{color:#fff;background:rgba(255,255,255,.06);}
+  .tab-btn.active{
+    color:#fff;background:var(--paper);
+    color:var(--navy);
+    border-bottom:3px solid var(--brass);
+  }
+
+  .group-label{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:10.5px;font-weight:700;letter-spacing:.12em;
+    color:#8b96ac;padding:0 15px;margin-top:6px;text-transform:uppercase;
+  }
+
+  /* ---------- layout ---------- */
+  main{max-width:1080px;margin:0 auto;padding:26px 18px 90px;}
+  .panel{display:none;}
+  .panel.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+  .section-head{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-left:5px solid var(--brass);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:20px;
+  }
+  .section-head .eyebrow{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--brass);
+    text-transform:uppercase;
+  }
+  .section-head h2{margin:4px 0 8px;font-size:23px;}
+  .section-head .theme{color:var(--ink-soft);font-size:14.5px;max-width:760px;}
+
+  .q-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    margin-bottom:14px;
+  }
+  .q-top{display:flex;gap:12px;align-items:flex-start;}
+  .q-num{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    background:var(--navy);color:#fff;
+    min-width:34px;height:34px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:12.5px;flex:none;
+  }
+  .q-body{flex:1;min-width:0;}
+  .q-text{font-size:16px;color:var(--ink);}
+  .reveal-btn{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    margin-top:10px;
+    background:var(--brass-soft);color:#6b4a17;
+    border:1px solid #e6d3a5;
+    padding:7px 13px;border-radius:100px;
+    font-size:12.5px;font-weight:700;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .reveal-btn:hover{background:#ecdcae;}
+  .answer-wrap{
+    margin-top:12px;display:none;
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+  .answer-wrap.open{display:block;}
+  .answer-line{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ok-soft);color:#1d5c37;
+    padding:6px 12px;border-radius:8px;
+    font-weight:700;font-size:14px;margin-bottom:10px;
+  }
+  .evidence{
+    background:#fbf9f4;border:1px solid var(--line);
+    border-left:3px solid var(--rose);
+    border-radius:10px;padding:10px 14px;margin-top:8px;
+  }
+  .evidence .tag{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:10.5px;font-weight:700;letter-spacing:.08em;
+    color:var(--rose);text-transform:uppercase;margin-bottom:4px;
+  }
+  .evidence .en{font-style:italic;color:var(--ink);font-size:14.5px;}
+  .evidence .vn{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:12.5px;color:var(--ink-soft);margin-top:6px;padding-top:6px;
+    border-top:1px dotted var(--line);
+  }
+  .note{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:12.5px;color:#6b4a17;background:var(--brass-soft);
+    padding:8px 12px;border-radius:8px;margin-top:8px;
+  }
+  .note:before{content:"⚑ Mẹo: ";font-weight:700;}
+
+  .hint-box{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    background:var(--teal-soft);border:1px solid #cfe4de;border-radius:10px;
+    padding:9px 13px;margin-top:10px;font-size:13px;color:#184b45;
+  }
+  .hint-box .hk{font-weight:700;}
+  .hint-box .hs{margin-top:5px;color:#2c5a53;}
+
+  .strategy-box{
+    margin-top:10px;background:#eef3fb;border:1px solid #cfdcf0;border-radius:10px;
+    padding:12px 15px;font-size:13.5px;color:#243a5e;
+  }
+  .strategy-box .sk{
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-weight:700;font-size:11.5px;
+    letter-spacing:.06em;text-transform:uppercase;color:#3a5d95;margin-bottom:4px;display:block;
+  }
+
+  .guide-panel .g-block{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;margin-bottom:16px;
+  }
+  .guide-panel .g-block h3{margin:0 0 8px;font-size:17px;color:var(--navy);}
+  .guide-panel .g-block p, .guide-panel .g-block li{font-size:14.5px;color:var(--ink-soft);}
+  .guide-panel .g-block ul{margin:6px 0 0;padding-left:20px;}
+  .guide-panel .g-block li{margin-bottom:6px;}
+  .guide-panel .num-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-size:11.5px;font-weight:700;
+    margin-right:8px;flex:none;
+  }
+  .guide-panel .g-item{display:flex;align-items:flex-start;margin-bottom:10px;}
+  .guide-panel .g-item .txt{font-size:14.5px;color:var(--ink);}
+  .guide-panel .g-item .txt b{color:var(--rose);}
+  .trap-example{
+    background:#fbf1ee;border-left:3px solid var(--rose);border-radius:8px;
+    padding:8px 12px;margin-top:6px;font-size:13px;color:#7a3226;font-style:italic;
+  }
+
+  /* ---------- vocab section (within reading/listening panel) ---------- */
+  .vocab-strip{margin-top:24px;}
+  .vocab-strip h3{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:10px;
+  }
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;}
+  .vocab-chip{
+    background:var(--teal-soft);border:1px solid #cfe4de;border-radius:10px;
+    padding:10px 12px;
+  }
+  .vocab-chip .w{font-weight:700;color:#184b45;font-size:14.5px;}
+  .vocab-chip .m{font-family:"Avenir Next","Segoe UI",sans-serif;font-size:12.5px;color:#33665f;margin-top:2px;}
+  .vocab-chip .e{font-family:"Avenir Next","Segoe UI",sans-serif;font-size:11.5px;color:#5f8a83;margin-top:4px;font-style:italic;}
+
+  /* ---------- vocab hub tab ---------- */
+  .vhub-toolbar{
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px 16px;margin-bottom:18px;
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+  }
+  .filter-btn{
+    border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+    padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;
+  }
+  .filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .vhub-stats{margin-left:auto;font-size:12.5px;color:var(--ink-soft);}
+  .vhub-stats b{color:var(--ink);}
+  .reset-btn{
+    border:1px solid var(--rose);color:var(--rose);background:#fff;
+    padding:7px 12px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;
+  }
+
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+  .flash{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px;cursor:pointer;position:relative;
+    transition:transform .12s;
+    min-height:130px;
+  }
+  .flash:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,20,20,.06);}
+  .flash.learned{border-color:#bfe0c9;background:#fbfffc;}
+  .flash .src{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    color:#9aa3b2;
+  }
+  .flash .front{font-size:18px;font-weight:700;margin-top:6px;color:var(--ink);}
+  .flash .back{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:13.5px;color:var(--teal);margin-top:8px;display:none;
+  }
+  .flash .back .ex{color:var(--ink-soft);font-style:italic;margin-top:4px;font-size:12px;}
+  .flash.flipped .back{display:block;}
+  .flash.flipped .hint{display:none;}
+  .flash .hint{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:11.5px;color:#b3a58a;margin-top:10px;
+  }
+  .flash-actions{
+    display:none;gap:8px;margin-top:12px;
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+  }
+  .flash.flipped .flash-actions{display:flex;}
+  .fa-btn{
+    flex:1;border:none;border-radius:8px;padding:7px 0;font-size:12px;font-weight:700;cursor:pointer;
+  }
+  .fa-btn.no{background:var(--rose-soft);color:var(--rose);}
+  .fa-btn.yes{background:var(--ok-soft);color:var(--ok);}
+  .learned-badge{
+    position:absolute;top:12px;right:14px;font-size:15px;
+  }
+
+  .empty-state{
+    text-align:center;padding:50px 20px;color:var(--ink-soft);
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+  }
+  .empty-state .big{font-size:38px;}
+
+  footer{
+    text-align:center;color:#a79c85;font-size:11.5px;
+    font-family:"Avenir Next","Segoe UI",sans-serif;padding:20px 0 40px;
+  }
+
+  @media(max-width:640px){
+    .brand h1{font-size:17px;}
+    .q-num{min-width:28px;height:28px;font-size:11px;}
+    .section-head h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="mark">CAMBRIDGE IELTS 21</span>
+      <h1>Test 2 — Bài giảng Listening &amp; Reading</h1>
+    </div>
+    <div class="group-label sans">Listening</div>
+    <div class="tabs" id="tabs-listening">
+      <button class="tab-btn" data-target="guide" id="guide-tab-btn">🎧 Bí kíp nghe</button>
+    </div>
+    <div class="group-label sans">Reading</div>
+    <div class="tabs" id="tabs-reading"></div>
+    <div class="group-label sans">Ôn tập</div>
+    <div class="tabs" id="tabs-vocab" style="padding-bottom:6px;"></div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="panel guide-panel" id="panel-guide">
+    <div class="section-head">
+      <div class="eyebrow sans">Dành cho bạn học yếu Listening</div>
+      <h2>Bí kíp nghe — làm gì trước, trong và sau khi nghe</h2>
+      <div class="theme">Nghe kém không phải vì không biết từ, mà thường vì KHÔNG BIẾT MÌNH ĐANG NGHE ĐỂ TÌM GÌ. 6 nguyên tắc dưới đây giúp bạn nghe có mục đích thay vì cố hiểu 100% lời thoại.</div>
+    </div>
+
+    <div class="g-block">
+      <h3>Trước khi nghe (30-60 giây quan trọng nhất)</h3>
+      <div class="g-item"><span class="num-badge">1</span><div class="txt"><b>Đọc câu hỏi trước</b>, gạch chân từ khóa (danh từ riêng, số, tính từ đặc biệt). Đề bài luôn cho bạn thời gian đọc trước khi băng chạy — đừng bỏ lỡ.</div></div>
+      <div class="g-item"><span class="num-badge">2</span><div class="txt"><b>Đoán từ loại cần điền</b>: ô trống sau "on ..." thường là ngày/thời gian; sau "£" là số tiền; sau tính từ sở hữu thường là danh từ. Đoán trước giúp tai bạn "chờ" đúng loại âm thanh.</div></div>
+      <div class="g-item"><span class="num-badge">3</span><div class="txt"><b>Nhớ nguyên tắc thứ tự</b>: thông tin trong bài luôn xuất hiện đúng theo thứ tự câu hỏi. Nếu vừa nghe được đáp án câu 5, câu 6 chắc chắn nằm ngay sau đó — không cần lo lắng "quay lại".</div></div>
+    </div>
+
+    <div class="g-block">
+      <h3>Trong khi nghe</h3>
+      <div class="g-item"><span class="num-badge">4</span><div class="txt">Chỉ cần bắt đúng <b>1-2 từ khóa gần đáp án</b>, không cần hiểu cả câu. Ví dụ nghe thấy "actual cost is..." → tai lập tức tập trung vào con số ngay sau đó, bỏ qua phần còn lại của câu.</div></div>
+      <div class="g-item"><span class="num-badge">5</span><div class="txt">Cảnh giác với <b>từ báo hiệu sửa thông tin</b>: "actually", "but", "sorry", "no wait", "I mean", "in fact". Sau các từ này thường là đáp án ĐÚNG, còn thông tin nói TRƯỚC đó là bẫy.
+        <div class="trap-example">Ví dụ thật trong bài: "It was on the 23rd of January <b>but</b> they had to change the date... it's on the 6th." → 23/1 là bẫy, 6/4 là đáp án thật.</div>
+      </div></div>
+      <div class="g-item"><span class="num-badge">6</span><div class="txt">Nếu bỏ lỡ 1 câu, <b>đừng dừng lại suy nghĩ</b> — bỏ qua ngay và tập trung nghe câu tiếp theo. Cố nhớ lại câu đã mất sẽ khiến bạn mất luôn 2-3 câu sau.</div></div>
+    </div>
+
+    <div class="g-block">
+      <h3>Sau khi nghe / khi luyện tập lại</h3>
+      <ul>
+        <li>Luôn kiểm tra <b>giới hạn từ</b> của đề (ONE WORD ONLY / NO MORE THAN TWO WORDS AND/OR A NUMBER) — viết thừa từ sẽ bị tính sai dù đúng nghĩa.</li>
+        <li>Luyện nghe lại (transcript) những câu mình sai để nhận diện: mình sai vì không biết từ, vì nghe nhầm âm, hay vì mất tập trung ở đúng thời điểm?</li>
+        <li>Luyện riêng kỹ năng nghe SỐ (ngày tháng, giá tiền, số điện thoại) và CHÍNH TẢ TÊN RIÊNG — đây là 2 dạng lỗi phổ biến nhất kể cả với người nghe tốt.</li>
+      </ul>
+    </div>
+
+    <div class="g-block">
+      <h3>Cách dùng mỗi câu hỏi trong tài liệu này để luyện tập</h3>
+      <p>Ở mỗi câu, trước khi bấm "Xem đáp án", hãy đọc ô <b>🎯 Từ khóa &amp; tín hiệu nghe</b> màu xanh trước — đó là những gì tai bạn cần "phục kích" khi nghe audio thật. Sau đó mới bấm xem đáp án để đối chiếu.</p>
+    </div>
+  </section>
+</main>
+
+<footer>Tài liệu học dựa trên Cambridge IELTS 21, Test 2 · Từ vựng được lưu tự động trên thiết bị này</footer>
+
+<script>
+const DATA = [{"id": "l1", "group": "listening", "title": "Listening Part 1", "subtitle": "Câu 1-10 · Điền bảng thông tin", "theme": "Nhân viên trường Steynford College tư vấn các lớp học 1 ngày cho một phụ nữ đang tìm hiểu về khoá học, ngày học, học phí.", "questions": [{"num": 1, "q": "Vietnamese food course date", "answer": "13th (of) January", "en": "I think that was on the 13th of January. ... Yes, you're right about the date, but it's 59 pounds actually.", "vn": "Tôi nghĩ đó là vào ngày 13 tháng 1. ... Đúng vậy, bạn nói đúng về ngày, nhưng thực ra là 59 bảng.", "note": "Người phụ nữ nói ngày, và người đàn ông XÁC NHẬN ngày đó đúng (chỉ sửa lại giá tiền).", "keyword": "ngày tháng (số thứ tự + tháng)", "signal": "“I think that was on the 13th of January.” → được XÁC NHẬN ngay sau bởi “Yes, you're right about the date”. Chỉ giá tiền bị sửa, ngày thì đúng."}, {"num": 2, "q": "Bread making course cost", "answer": "£48", "en": "The actual cost is £48 but then there's an extra charge as well as that for the ingredients.", "vn": "Giá thực tế là 48 bảng nhưng còn có thêm phụ phí cho nguyên liệu nữa.", "note": "Chú ý: 48 bảng là học phí gốc, KHÔNG bao gồm nguyên liệu.", "keyword": "con số + đơn vị tiền (£)", "signal": "“The actual cost is £48” — chữ actual (thực tế) báo hiệu đây là con số ĐÚNG, khác với con số người phụ nữ đoán trước đó."}, {"num": 3, "q": "Bread making - what else they learn", "answer": "pizza", "en": "they learn how to make white bread and then they make sourdough, that seems to be very fashionable at present, and they learn how to make pizza, which is apparently really good.", "vn": "họ học làm bánh mì trắng, rồi bánh mì chua (sourdough) đang rất thịnh hành, và học làm pizza, nghe nói rất ngon.", "note": "Bảng liệt kê: bánh mì trắng, sourdough, và ... → pizza.", "keyword": "danh từ cuối trong 1 chuỗi liệt kê", "signal": "liệt kê 3 món: white bread, sourdough, and... pizza — nghe chữ “and” cuối cùng để bắt từ cần điền."}, {"num": 4, "q": "Face massage - teacher trained in", "answer": "India", "en": "the type of massage done is a traditional technique used in India and she actually did her training there.", "vn": "kiểu mát-xa này là kỹ thuật truyền thống dùng ở Ấn Độ và cô ấy đã được đào tạo ở đó.", "note": "'trained there' = trained in India.", "keyword": "tên quốc gia", "signal": "“a traditional technique used in ___ and she actually did her training there” — “there” = chính là đáp án vừa nói trước đó."}, {"num": 5, "q": "Face massage - bring a ...", "answer": "mirror", "en": "You practise it on yourself so you have to take a mirror to the class, so you can see what you're doing.", "vn": "Bạn tự thực hành trên mình nên phải mang theo một chiếc gương để nhìn thấy mình đang làm gì.", "note": "", "keyword": "đồ vật cần mang theo", "signal": "“you have to take a ___ to the class” — nghe ngay sau cụm 'have to take'."}, {"num": 6, "q": "Candle making course date", "answer": "6th (of) April", "en": "Yes that's sometime in April, I think. Let me check ... yes, it's on the 6th. It was on the 23rd of January but they had to change the date.", "vn": "Vâng, hình như là vào tháng 4. Để tôi kiểm tra... đúng rồi, ngày 6. Trước đó là 23 tháng 1 nhưng họ phải đổi ngày.", "note": "BẪY: ngày 23/1 là ngày CŨ đã bị đổi, đáp án đúng là ngày MỚI 6/4.", "keyword": "ngày tháng (bị đổi lịch)", "signal": "⚠️ BẪY SỬA THÔNG TIN: “it's on the 6th. It was on the 23rd of January but they had to change the date.” — ngày 23/1 nói TRƯỚC nhưng là ngày CŨ, ngày 6/4 nói SAU mới là đáp án."}, {"num": 7, "q": "Candle making - only ... ingredients are used", "answer": "natural", "en": "I think one reason why people like it is because the candles are all made out of natural products.", "vn": "Tôi nghĩ một lý do khiến mọi người thích lớp này là vì nến được làm hoàn toàn từ nguyên liệu tự nhiên.", "note": "", "keyword": "tính từ mô tả nguyên liệu", "signal": "“the candles are all made out of ___ products” — nghe sau cụm 'made out of'."}, {"num": 8, "q": "Silk painting course cost", "answer": "£67.50", "en": "It's £67.50, which is really good value I think - there's a similar class I've seen that was £110.", "vn": "Giá 67.50 bảng, tôi thấy khá hời - có lớp tương tự tôi từng thấy giá tới 110 bảng.", "note": "BẪY: £110 chỉ là giá SO SÁNH của một lớp khác, không phải đáp án.", "keyword": "con số + đơn vị tiền", "signal": "⚠️ BẪY SO SÁNH: “It's £67.50... there's a similar class I've seen that was £110.” — £110 chỉ để so sánh, không phải đáp án."}, {"num": 9, "q": "Silk painting - bring an apron or old ...", "answer": "shirt", "en": "everyone has to bring something to protect their clothing, like an apron if you've got one, or a shirt that you don't use any more, because the dye can really stain your clothes.", "vn": "mọi người phải mang theo thứ gì đó để bảo vệ quần áo, như tạp dề nếu có, hoặc một chiếc áo sơ mi cũ, vì thuốc nhuộm có thể làm bẩn quần áo.", "note": "", "keyword": "trang phục bảo hộ", "signal": "“an apron... or a ___ that you don't use any more” — danh từ thứ 2 trong cặp lựa chọn 'A hoặc B'."}, {"num": 10, "q": "DIY for beginners - use a drill, saw and ...", "answer": "hammer", "en": "Yeah, that would be really useful, and I even need to learn how to use a hammer because I always end up hitting my fingers. ... Yes, you'll do that too.", "vn": "Vâng, điều đó sẽ rất hữu ích, và tôi cũng cần học cách dùng búa vì tôi hay bị đập vào ngón tay. ... Vâng, bạn cũng sẽ được học cái đó.", "note": "", "keyword": "dụng cụ", "signal": "Người phụ nữ TỰ nói thêm: “I even need to learn how to use a hammer” rồi người đàn ông xác nhận “Yes, you'll do that too” — đáp án nằm trong câu HỎI/ĐỀ XUẤT của người nói, không phải câu liệt kê ban đầu."}], "vocab": [{"en": "register (v)", "vn": "đăng ký", "ex": "Would you like to register for that?"}, {"en": "waiting list (n)", "vn": "danh sách chờ", "ex": "I can put you on the waiting list."}, {"en": "ingredient (n)", "vn": "nguyên liệu", "ex": "extra charge for the ingredients"}, {"en": "sourdough (n)", "vn": "bánh mì chua (lên men tự nhiên)", "ex": "they make sourdough"}, {"en": "fashionable (adj)", "vn": "thịnh hành, hợp mốt", "ex": "that seems to be very fashionable at present"}, {"en": "wrinkle (n)", "vn": "nếp nhăn", "ex": "get rid of lines and wrinkles"}, {"en": "apron (n)", "vn": "tạp dề", "ex": "bring an apron"}, {"en": "stain (v)", "vn": "làm bẩn, làm ố", "ex": "the dye can really stain your clothes"}, {"en": "popular (adj)", "vn": "phổ biến, được ưa chuộng", "ex": "It's a very popular class"}, {"en": "value (n)", "vn": "giá trị, đáng đồng tiền", "ex": "which is really good value"}], "strategy": "Đây là dạng ĐIỀN BẢNG (table completion). Trước khi nghe: đọc tiêu đề từng cột, đoán từ loại cần điền (ngày, số tiền, danh từ...). Thông tin luôn đi THEO ĐÚNG THỨ TỰ câu hỏi trong bảng. Cẩn thận: số đầu tiên bạn nghe được có thể bị SỬA LẠI ngay sau đó (nghe từ 'actually', 'but', 'no wait')."}, {"id": "l2", "group": "listening", "title": "Listening Part 2", "subtitle": "Câu 11-20 · Chọn đáp án & điền bản đồ", "theme": "Giới thiệu về các tuyến đi bộ lịch sử/tự nhiên (Marsden Coastal Walk, Melby Heritage Walk) và bản đồ khu mỏ than Melby Coal Mine.", "questions": [{"num": "11 & 12", "q": "Marsden Coastal Walk - lời khuyên nào ĐÚNG (chọn 2)", "answer": "B, E", "en": "As there are clear signposts all along the way, you don't even need to take a map with you. ... the route goes inland slightly and passes a castle built in the 1400s ... The castle's now just a pile of stones but it's a great place to take photos.", "vn": "Vì có biển chỉ dẫn rõ ràng suốt tuyến đường nên bạn không cần mang theo bản đồ. ... tuyến đường đi vào đất liền một chút và đi qua một lâu đài xây từ thế kỷ 15 ... Lâu đài giờ chỉ còn là đống đá nhưng là nơi chụp ảnh tuyệt vời.", "note": "E = không cần lo bị lạc (nhờ biển báo). B = đừng bỏ lỡ tàn tích lâu đài.", "keyword": "tính từ/cụm mô tả lời khuyên", "signal": "“there are clear signposts... you don't even need to take a map” (không lo lạc) và “The castle's now just a pile of stones but it's a great place to take photos” (đừng bỏ lỡ tàn tích)."}, {"num": "13 & 14", "q": "Melby Heritage Walk - điều gì ĐÚNG (chọn 2)", "answer": "C, D", "en": "The route continues along the tops of the hills and brings you back down to the starting point - the car park at Melby Coal Mine. ... those with lots of energy can climb the tower that's situated where there was once a seventeenth century hunting lodge.", "vn": "Tuyến đường tiếp tục dọc theo đỉnh đồi rồi quay trở lại điểm xuất phát - bãi đỗ xe ở mỏ than Melby. ... những ai còn nhiều năng lượng có thể leo lên tháp nằm ở vị trí từng là một nhà săn bắn thế kỷ 17.", "note": "C = đường đi vòng tròn (bắt đầu và kết thúc cùng một điểm). D = tháp xây trên nền công trình cũ.", "keyword": "mô tả đường đi & công trình cũ", "signal": "“brings you back down to the starting point” (đường vòng tròn) và “climb the tower that's situated where there was once a... hunting lodge” (tháp xây trên nền cũ)."}, {"num": 15, "q": "Exhibition (khu triển lãm) ở vị trí nào trên bản đồ", "answer": "F", "en": "To see that, you go from the car park, via a covered walkway to the Main Visitor Centre. ... Beyond that room is the exhibition.", "vn": "Để xem khu đó, bạn đi từ bãi đỗ xe, qua lối đi có mái che, tới Trung tâm đón khách chính. ... Phía sau phòng đó là khu triển lãm.", "note": "", "keyword": "từ chỉ vị trí + tên phòng/khu vực", "signal": "đi theo trình tự: car park → covered walkway → Main Visitor Centre → “Beyond that room is the exhibition”."}, {"num": 16, "q": "Baths (nhà tắm) ở vị trí nào", "answer": "B", "en": "You can see that in the building directly to the north of the engine house.", "vn": "Bạn có thể thấy nó trong toà nhà nằm ngay phía bắc của nhà máy động cơ.", "note": "", "keyword": "hướng la bàn", "signal": "“directly to the north of the engine house” — mốc tham chiếu là engine house."}, {"num": 17, "q": "Tools (công cụ khai mỏ) ở vị trí nào", "answer": "D", "en": "You can find that in a small L-shaped building in the middle of the northern boundary of the site.", "vn": "Bạn có thể tìm thấy nó trong một toà nhà nhỏ hình chữ L nằm giữa ranh giới phía bắc khu di tích.", "note": "", "keyword": "hình dạng toà nhà + vị trí", "signal": "“a small L-shaped building in the middle of the northern boundary”."}, {"num": 18, "q": "Vehicles (xe cộ, toa xe) ở vị trí nào", "answer": "A", "en": "The vehicle shed ... is in the southwest corner of the site, and can be accessed via a covered walkway.", "vn": "Kho xe ... nằm ở góc tây nam khu di tích, có thể đến bằng lối đi có mái che.", "note": "", "keyword": "hướng + cách tiếp cận", "signal": "“in the southwest corner of the site, and can be accessed via a covered walkway”."}, {"num": 19, "q": "Ponies (khu nuôi ngựa nhỏ) ở vị trí nào", "answer": "H", "en": "There is a field with ponies ... on the north-eastern boundary of the site, not approached via a covered walkway.", "vn": "Có một cánh đồng nuôi ngựa nhỏ ... nằm ở ranh giới đông bắc khu di tích, KHÔNG đi qua lối có mái che.", "note": "Chú ý từ phủ định 'not approached via a covered walkway'.", "keyword": "hướng + phủ định", "signal": "⚠️ chú ý từ phủ định: “on the north-eastern boundary... NOT approached via a covered walkway”."}, {"num": 20, "q": "Education centre (trung tâm giáo dục) ở vị trí nào", "answer": "E", "en": "The centre is connected to the ticket office via a short section of covered walkway.", "vn": "Trung tâm này được nối với phòng vé bằng một đoạn lối đi có mái che ngắn.", "note": "", "keyword": "kết nối với khu vực nào", "signal": "“connected to the ticket office via a short section of covered walkway”."}], "vocab": [{"en": "strenuous (adj)", "vn": "vất vả, tốn sức", "ex": "there are no strenuous climbs"}, {"en": "signpost (n)", "vn": "biển chỉ dẫn", "ex": "there are clear signposts all along the way"}, {"en": "inland (adv)", "vn": "vào (hướng) đất liền", "ex": "the route goes inland slightly"}, {"en": "a pile of stones", "vn": "đống đá đổ nát", "ex": "The castle's now just a pile of stones"}, {"en": "valley (n)", "vn": "thung lũng", "ex": "climb to the top of the valley"}, {"en": "dense (adj)", "vn": "rậm rạp, dày đặc", "ex": "hike through the dense woods"}, {"en": "hunting lodge (n)", "vn": "nhà nghỉ dùng cho việc săn bắn", "ex": "a seventeenth century hunting lodge"}, {"en": "boiler (n)", "vn": "nồi hơi", "ex": "The boiler has gone from there now"}, {"en": "mechanisation (n)", "vn": "sự cơ giới hoá", "ex": "before mechanisation"}, {"en": "boundary (n)", "vn": "ranh giới", "ex": "the northern boundary of the site"}, {"en": "covered walkway (n)", "vn": "lối đi có mái che", "ex": "accessed via a covered walkway"}], "strategy": "Q11-14 là MULTIPLE CHOICE (chọn 2/5) — đáp án đúng thường là ý được nhấn mạnh hoặc khen ngợi, đáp án nhiễu thường bị phủ định hoặc chỉ nhắc thoáng qua. Q15-20 là dạng BẢN ĐỒ — trước khi nghe, xác định các hướng (Bắc/Nam/Đông/Tây) và các mốc cố định trên bản đồ (bãi đỗ xe, engine house...), sau đó nghe các từ chỉ vị trí (north of, southwest corner, via a covered walkway)."}, {"id": "l3", "group": "listening", "title": "Listening Part 3", "subtitle": "Câu 21-30 · Thảo luận về khoá học khoa học thực phẩm", "theme": "Giảng viên trò chuyện với hai sinh viên Nadia và Fergus về các buổi học an toàn thực phẩm, các đề xuất chủ đề mới, và dự án phát triển sản phẩm thực phẩm mới (falafel làm từ jackfruit - mít).", "questions": [{"num": "21 & 22", "q": "Thông tin MỚI đối với cả hai (chọn 2)", "answer": "B, E", "en": "I hadn't realised that unsafe food causes more than 200 different diseases. ... that it's partly because when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.", "vn": "Tôi không nhận ra là thực phẩm không an toàn gây ra hơn 200 loại bệnh khác nhau. ... một phần là vì khi động vật được dùng kháng sinh rồi con người ăn vào, kháng sinh sẽ đi vào chuỗi thực phẩm. Tôi cũng không biết điều đó.", "note": "B = số lượng bệnh do thực phẩm nhiễm khuẩn; E = hệ quả của việc dùng kháng sinh cho động vật.", "keyword": "cụm diễn tả 'thông tin mới'", "signal": "“I hadn't realised that...” và “I had no idea about that either” — 2 cụm này đánh dấu chính xác 2 ý là THÔNG TIN MỚI với cả hai người."}, {"num": "23 & 24", "q": "Điều gây ấn tượng với Fergus về dự án chống gian lận thực phẩm (chọn 2)", "answer": "C, D", "en": "it's really good to address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans. ... what the researchers succeeded in doing was to ensure that these tests were carried out at different stages in the food's journey.", "vn": "thật tốt khi giải quyết một vấn đề mà rất nhiều nhóm người gặp phải - người có quy định tôn giáo đặc biệt, người ăn chay, thuần chay. ... điều các nhà nghiên cứu làm được là đảm bảo các xét nghiệm được thực hiện ở nhiều giai đoạn khác nhau trong hành trình của thực phẩm.", "note": "D = đa dạng yêu cầu ăn kiêng; C = nhiều xét nghiệm ở nhiều giai đoạn. Lưu ý: Fergus KHÔNG ấn tượng với cách công bố kết quả (đáp án B sai).", "keyword": "cụm khen ngợi/ấn tượng", "signal": "“I thought it was really good to...” (ấn tượng #1) và “what the researchers succeeded in doing was...” (ấn tượng #2). Chú ý: “I thought there were some problems with that” = KHÔNG ấn tượng, loại trừ đáp án nhiễu."}, {"num": "25 & 26", "q": "Chủ đề cả hai đề xuất thêm vào khoá học (chọn 2)", "answer": "A, C", "en": "not so much on the seafood industry, where stocks are in danger of being overexploited ... What about sessions on the variety of food and eating habits around the world? That's very relevant nowadays.", "vn": "chưa học nhiều về ngành hải sản, nơi nguồn lợi thuỷ sản có nguy cơ bị khai thác quá mức ... Còn về các buổi học về sự đa dạng thực phẩm và thói quen ăn uống trên thế giới thì sao? Điều đó rất phù hợp với hiện nay.", "note": "A = đánh bắt bền vững (seafood/overexploited); C = khác biệt ẩm thực toàn cầu.", "keyword": "cụm đề xuất + đồng thuận", "signal": "“not so much on the seafood industry” (đề xuất 1) và “Yes, that'd be a good topic”/“I think the whole class would be interested” (cả hai đồng ý ở đề xuất 2). Ý bị chê 'sounds more like a medical topic' hoặc 'maybe too specialist' bị LOẠI."}, {"num": 27, "q": "Initial aim (mục tiêu ban đầu của dự án)", "answer": "C - Việc này dễ quyết định", "en": "We decided we wanted to create something people could eat on the go rather than in a restaurant. ... We made up our minds about that pretty quickly.", "vn": "Chúng tôi quyết định muốn tạo ra món ăn có thể ăn khi di chuyển thay vì ăn ở nhà hàng. ... Chúng tôi quyết định khá nhanh.", "note": "", "keyword": "tính từ chỉ mức độ dễ/khó", "signal": "“We made up our minds about that pretty quickly” = quyết định nhanh, dễ dàng."}, {"num": 28, "q": "Literature review (tổng quan tài liệu)", "answer": "D - Được hỗ trợ nhờ tài liệu hướng dẫn", "en": "We hadn't done one of these before so, the handout with advice for the project was very useful here.", "vn": "Chúng tôi chưa từng làm việc này trước đây nên tờ hướng dẫn kèm lời khuyên cho dự án rất hữu ích.", "note": "", "keyword": "cụm chỉ sự hỗ trợ", "signal": "“the handout with advice for the project was very useful here” = có tài liệu hướng dẫn hỗ trợ."}, {"num": 29, "q": "Product development (phát triển sản phẩm)", "answer": "F - Liên quan đến việc chọn nguyên liệu mới", "en": "we wanted it to be something a bit different from an ordinary falafel. ... We really made the right choice when we finally decided to use jackfruit.", "vn": "chúng tôi muốn nó khác biệt một chút so với falafel thông thường. ... Chúng tôi đã chọn đúng khi quyết định dùng mít non (jackfruit).", "note": "", "keyword": "động từ chọn nguyên liệu", "signal": "“we finally decided to use jackfruit” = liên quan tới việc chọn nguyên liệu mới."}, {"num": 30, "q": "Product production (sản xuất sản phẩm)", "answer": "A - Khó khăn nhưng thú vị", "en": "The product production ... was harder than I expected ... It was mostly trial and error ... which it did a lot of the time [go wrong] ... we just moved on and kept adapting it and in the end it turned out fine and we had a lot of fun.", "vn": "Việc sản xuất sản phẩm ... khó hơn tôi tưởng ... chủ yếu là thử và sai ... nhiều lần bị hỏng ... nhưng chúng tôi cứ tiếp tục điều chỉnh và cuối cùng mọi thứ ổn, chúng tôi cũng rất vui.", "note": "", "keyword": "tính từ trái nghĩa liền kề (khó nhưng vui)", "signal": "“harder than I expected... trial and error... in the end it turned out fine and we had a lot of fun” — vừa khó (harder) vừa vui (fun) → chọn đáp án có CẢ HAI ý."}], "vocab": [{"en": "obesity (n)", "vn": "bệnh béo phì", "ex": "the rise in rates of obesity"}, {"en": "antibiotic resistance (n)", "vn": "tình trạng kháng kháng sinh", "ex": "resistance to antibiotics is on the increase"}, {"en": "food fraud (n)", "vn": "gian lận thực phẩm", "ex": "a project to prevent food fraud"}, {"en": "vegan / vegetarian (n)", "vn": "người ăn thuần chay / ăn chay", "ex": "vegetarians and vegans"}, {"en": "overexploit (v)", "vn": "khai thác quá mức", "ex": "stocks are in danger of being overexploited"}, {"en": "personalised (adj)", "vn": "cá nhân hoá", "ex": "a personalised approach to diet"}, {"en": "savoury (adj)", "vn": "có vị mặn/đậm (trái với ngọt)", "ex": "it's really good in savoury dishes"}, {"en": "trial and error", "vn": "thử và sai (phương pháp thử nghiệm)", "ex": "It was mostly trial and error"}, {"en": "literature review (n)", "vn": "tổng quan tài liệu nghiên cứu", "ex": "we had to do the literature review"}, {"en": "dietary requirement (n)", "vn": "yêu cầu/chế độ ăn kiêng đặc biệt", "ex": "faced by so many different groups"}], "strategy": "Đây là bài HỘI THOẠI 3 người/2 người có nhiều ý kiến trái chiều. Chiến lược: chú ý xem PHÁT NGÔN nào là của ai — hai người thường không đồng ý với nhau, và chỉ ý được CẢ HAI cùng đồng ý mới là đáp án đúng (với dạng chọn 2). Với dạng flow-chart, nghe các tính từ mô tả cảm xúc (easy, hard, disagreement, enjoyable)."}, {"id": "l4", "group": "listening", "title": "Listening Part 4", "subtitle": "Câu 31-40 · Bài giảng về ngành du thuyền", "theme": "Bài thuyết trình về những thách thức của ngành công nghiệp du thuyền (overtourism, hình ảnh cũ kỹ) và các giải pháp để thu hút khách hàng trẻ.", "questions": [{"num": 31, "q": "Vấn đề tệ nhất của overtourism", "answer": "Pollution", "en": "Pollution, for example, is among the greatest threats to many popular tourist destinations.", "vn": "Ví dụ, ô nhiễm là một trong những mối đe doạ lớn nhất với nhiều điểm du lịch nổi tiếng.", "note": "", "keyword": "danh từ chỉ vấn đề môi trường", "signal": "“Pollution, for example, is among the greatest threats” — 'for example' + 'greatest' báo hiệu đây là vấn đề TỆ NHẤT."}, {"num": 32, "q": "Loại thuế được áp dụng ở một số thành phố", "answer": "tax", "en": "Several cities, such as Barcelona, have responded by imposing a tax which all visitors to the city from cruise ships have to pay.", "vn": "Một số thành phố như Barcelona đã áp dụng một loại thuế mà mọi du khách đến từ tàu du lịch phải trả.", "note": "", "keyword": "danh từ chỉ khoản phí", "signal": "“have responded by imposing a ___ which all visitors... have to pay”."}, {"num": 33, "q": "Bruges: cửa hàng chỉ bán ... và đồ lưu niệm", "answer": "chocolate", "en": "the city was becoming like a 'theme park', with shops only catering for tourists, selling chocolate, which Belgium is famous for, and other souvenirs.", "vn": "thành phố trở nên giống một 'công viên giải trí', với các cửa hàng chỉ phục vụ khách du lịch, bán sô-cô-la - thứ Bỉ nổi tiếng - và các đồ lưu niệm khác.", "note": "", "keyword": "danh từ chỉ mặt hàng", "signal": "“shops only catering for tourists, selling ___, which Belgium is famous for”."}, {"num": 34, "q": "Dubrovnik quản lý ... của các chuyến tàu du lịch", "answer": "timing", "en": "What it does now is control the timing of all cruise ship entries to the city's port.", "vn": "Điều thành phố làm hiện nay là kiểm soát thời điểm mọi tàu du lịch cập cảng.", "note": "", "keyword": "danh từ trừu tượng (quản lý cái gì)", "signal": "“control the ___ of all cruise ship entries to the city's port”."}, {"num": 35, "q": "Có một giả định về ... của các chuyến du thuyền", "answer": "cost", "en": "A recent survey showed that cost is also a major factor in putting younger groups off going on a cruise. But what they don't realise is that ... cruises can actually be good value.", "vn": "Một khảo sát gần đây cho thấy chi phí cũng là yếu tố chính khiến giới trẻ ngại đi du thuyền. Nhưng họ không nhận ra rằng ... du thuyền thực ra khá đáng tiền.", "note": "Người trẻ nghĩ du thuyền đắt (giả định sai về CHI PHÍ).", "keyword": "danh từ chỉ chi phí/nhận thức sai", "signal": "“___ is also a major factor in putting younger groups off going on a cruise” — đây là một GIẢ ĐỊNH SAI, người nói phản bác ngay sau."}, {"num": 36, "q": "Mọi người nghĩ có quá nhiều ...", "answer": "rules", "en": "another perception is that cruises have lots of rules about what to wear and how to behave. But these days, most cruises are no longer very formal.", "vn": "một quan niệm khác là du thuyền có nhiều quy định về trang phục và cách cư xử. Nhưng ngày nay hầu hết các chuyến du thuyền không còn quá trang trọng nữa.", "note": "", "keyword": "danh từ số nhiều (quy định)", "signal": "“cruises have lots of ___ about what to wear and how to behave”."}, {"num": 37, "q": "Hoạt động: quyền anh, ... và các chương trình sức khoẻ", "answer": "diving", "en": "There's even a boxing ring on one ship, and most offer diving expeditions. But there's also a huge focus on well-being.", "vn": "Thậm chí có cả sàn đấu quyền anh trên một tàu, hầu hết các tàu đều có chuyến lặn biển. Ngoài ra còn chú trọng lớn đến sức khoẻ tinh thần.", "note": "", "keyword": "danh từ chỉ hoạt động thể thao", "signal": "liệt kê hoạt động: boxing ring, most offer ___ expeditions, well-being programmes."}, {"num": 38, "q": "Lựa chọn món ăn ... đã trở thành tiêu chuẩn", "answer": "vegan", "en": "Vegan dishes are standard, for example.", "vn": "Ví dụ, các món thuần chay đã trở thành tiêu chuẩn.", "note": "", "keyword": "tính từ chỉ chế độ ăn", "signal": "“___ dishes are standard, for example” — trong đoạn nói về thực đơn đa dạng."}, {"num": 39, "q": "Cung cấp ... đáng tin cậy", "answer": "wifi", "en": "companies have to guarantee wifi that can be relied upon at all times.", "vn": "các công ty phải đảm bảo wifi luôn ổn định mọi lúc.", "note": "", "keyword": "danh từ công nghệ", "signal": "“companies have to guarantee ___ that can be relied upon at all times”."}, {"num": 40, "q": "Cải thiện marketing bằng ... chất lượng cao trên mạng xã hội", "answer": "videos", "en": "Leading cruise lines now employ top agencies to produce first rate videos for social media channels.", "vn": "Các hãng du thuyền hàng đầu hiện thuê các công ty hàng đầu để sản xuất video chất lượng cao cho mạng xã hội.", "note": "", "keyword": "danh từ số nhiều (nội dung mạng xã hội)", "signal": "“produce first rate ___ for social media channels”."}], "vocab": [{"en": "overtourism (n)", "vn": "tình trạng quá tải du lịch", "ex": "the effects of overtourism"}, {"en": "deter (v)", "vn": "ngăn cản, làm nản lòng", "ex": "it won't deter enough people"}, {"en": "navigate (v)", "vn": "di chuyển qua, xoay xở", "ex": "impossible to navigate at times"}, {"en": "theme park (n)", "vn": "công viên giải trí", "ex": "becoming like a 'theme park'"}, {"en": "souvenir (n)", "vn": "đồ lưu niệm", "ex": "selling chocolate ... and other souvenirs"}, {"en": "perception (n)", "vn": "nhận thức, quan niệm", "ex": "they also have an image problem"}, {"en": "hybrid engine (n)", "vn": "động cơ lai (hybrid)", "ex": "built with hybrid engines"}, {"en": "sustainable (adj)", "vn": "bền vững", "ex": "cruise ships are becoming more sustainable"}, {"en": "contemporary (adj)", "vn": "hiện đại, đương đại", "ex": "The decor in these feels contemporary"}, {"en": "well-being (n)", "vn": "sức khoẻ tinh thần/thể chất", "ex": "a huge focus on well-being"}, {"en": "paperless (adj)", "vn": "không dùng giấy", "ex": "gone paperless with menus available on screen"}, {"en": "retiree (n)", "vn": "người đã nghỉ hưu", "ex": "aimed at retirees"}], "strategy": "Đây là bài THUYẾT TRÌNH 1 người nói liên tục (không có hội thoại) — khó nhất vì không có tín hiệu đổi lượt lời. Chiến lược: bám sát cấu trúc đề bài (heading), mỗi tiêu đề phụ tương ứng với 1-2 câu hỏi. Luôn hoàn thành đúng giới hạn từ (ONE WORD ONLY nghĩa là chỉ 1 từ, không thêm 'a/an/the')."}, {"id": "r1", "group": "reading", "title": "Reading Passage 1", "subtitle": "Câu 1-13 · Do animals dream?", "theme": "Bài đọc khoa học về việc liệu động vật (chuột, chim bồ câu, cá voi, cá heo, bạch tuộc) có nằm mơ hay không, dựa trên các nghiên cứu về giấc ngủ REM.", "questions": [{"num": 1, "q": "Loài vật có mô hình sóng não tương tự khi thức và khi ngủ (bảng)", "answer": "rats", "en": "researchers compared the brain patterns of rats running through a maze when awake with their brain patterns during REM sleep. They found the patterns were very similar and concluded that the sleeping rats were dreaming.", "vn": "các nhà nghiên cứu so sánh sóng não của chuột khi chạy trong mê cung lúc thức với sóng não lúc ngủ REM. Họ thấy các mô hình rất giống nhau và kết luận rằng những con chuột đang ngủ có thể đang mơ.", "note": ""}, {"num": 2, "q": "Loại thông tin não bồ câu xử lý mạnh khi ngủ REM", "answer": "visual", "en": "REM sleep activity was high in brain regions involved in processing visual information, especially images related to physical activities such as flying.", "vn": "hoạt động ngủ REM cao ở các vùng não xử lý thông tin thị giác, đặc biệt là hình ảnh liên quan đến hoạt động thể chất như bay lượn.", "note": ""}, {"num": 3, "q": "Cá voi/cá heo vẫn giữ ... bộ não thức khi ngủ", "answer": "half", "en": "whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake.", "vn": "cá voi và cá heo không tắt toàn bộ não khi ngủ, mà chỉ một nửa, phần còn lại vẫn thức.", "note": ""}, {"num": 4, "q": "REM sleep có thể ảnh hưởng đến độ nhạy cảm với ...", "answer": "temperature", "en": "It's thought that they don't experience REM sleep because during REM sleep animals are more vulnerable to extremes of temperature.", "vn": "người ta cho rằng chúng không trải qua giấc ngủ REM vì trong giai đoạn này động vật dễ bị tổn thương hơn trước nhiệt độ khắc nghiệt.", "note": ""}, {"num": 5, "q": "Giấc mơ của cá voi/cá heo có lẽ không quá ...", "answer": "vivid", "en": "They also show no sign of REM sleep, suggesting that they may only experience non-REM dreams, which are less vivid.", "vn": "chúng không có dấu hiệu của giấc ngủ REM, cho thấy chúng có thể chỉ trải qua những giấc mơ non-REM, vốn kém sống động hơn.", "note": ""}, {"num": 6, "q": "Mơ về trải nghiệm quá khứ giúp hình thành ký ức lâu dài", "answer": "TRUE", "en": "It is believed that when events are replayed in dreams, this helps to integrate memories into longer-term storage.", "vn": "người ta tin rằng khi các sự kiện được tái hiện trong giấc mơ, điều đó giúp tích hợp ký ức vào bộ nhớ dài hạn.", "note": ""}, {"num": 7, "q": "Hiện nay có thể biết chó đang mơ về điều gì", "answer": "FALSE", "en": "the truth is that we don't know if there is an internal experience of chasing rabbits that comes along with that.", "vn": "sự thật là chúng ta không biết liệu có trải nghiệm bên trong như đuổi thỏ đi kèm với hành động đó hay không.", "note": "Bài đọc nói KHÔNG THỂ biết, ngược với câu hỏi."}, {"num": 8, "q": "Phim tài liệu của David Scheel có ảnh hưởng đến các nghiên cứu khác về giấc ngủ của bạch tuộc", "answer": "NOT GIVEN", "en": "In 2019, while making a documentary, David Scheel ... housed an octopus named Heidi in a tank in his living room.", "vn": "Năm 2019, trong khi làm một bộ phim tài liệu, David Scheel ... đã nuôi một con bạch tuộc tên Heidi trong bể ở phòng khách.", "note": "Bài không đề cập việc phim tài liệu có ảnh hưởng đến nghiên cứu khác hay không."}, {"num": 9, "q": "Khi ngủ, bạch tuộc Costello phản ứng như thể đang săn mồi", "answer": "FALSE", "en": "Costello ... thrashed around, extended his mantle as if trying to make himself look bigger, and squirted ink as though he were being attacked by a predator.", "vn": "Costello ... vùng vẫy, phồng áo (mantle) như để trông to hơn, và phun mực như thể đang bị một kẻ săn mồi tấn công.", "note": "Costello phản ứng như đang BỊ TẤN CÔNG (phòng vệ), không phải đang săn mồi."}, {"num": 10, "q": "Scheel tin rằng cần nghiên cứu thêm về giấc mơ của bạch tuộc", "answer": "TRUE", "en": "He argues that as well as outward behaviour, brain imaging is needed to show that the octopuses are replaying sequences of activities from their waking lives in dreams.", "vn": "ông cho rằng ngoài hành vi bên ngoài, cần có hình ảnh não bộ để chứng minh bạch tuộc đang tái hiện lại các hoạt động trong đời sống thực khi mơ.", "note": ""}, {"num": 11, "q": "Sắp tới chúng ta có thể chia sẻ giấc mơ của người khác", "answer": "FALSE", "en": "The trouble is that we will never be able to experience any animal's dreams. That goes for other humans' dreams too.", "vn": "vấn đề là chúng ta sẽ KHÔNG BAO GIỜ có thể trải nghiệm giấc mơ của bất kỳ loài vật nào. Điều này cũng đúng với giấc mơ của người khác.", "note": "'never' mâu thuẫn với 'may soon' trong câu hỏi."}, {"num": 12, "q": "Thính giác có thể là phần quan trọng trong giấc mơ của một số loài", "answer": "NOT GIVEN", "en": "Dogs primarily navigate the world using smell while spiders rely much more on vibrations.", "vn": "chó chủ yếu định hướng bằng khứu giác trong khi nhện dựa nhiều hơn vào rung động.", "note": "Bài chỉ nói về khứu giác và rung động, không đề cập đến thính giác."}, {"num": 13, "q": "Sự quan tâm đến lý do con người mơ đã tăng mạnh gần đây", "answer": "NOT GIVEN", "en": "(No statement in the passage discusses a recent increase in interest in why humans dream.)", "vn": "(Bài đọc không đề cập đến việc sự quan tâm này tăng lên gần đây.)", "note": ""}], "vocab": [{"en": "alternate (v)", "vn": "luân phiên, xen kẽ", "ex": "we do so in two ways that alternate throughout the night"}, {"en": "twitch (v)", "vn": "co giật nhẹ", "ex": "Our muscles also twitch slightly"}, {"en": "paralysed (adj)", "vn": "tê liệt", "ex": "they are largely paralysed"}, {"en": "maze (n)", "vn": "mê cung", "ex": "rats running through a maze"}, {"en": "intriguingly (adv)", "vn": "một cách thú vị/hấp dẫn", "ex": "Intriguingly, REM sleep activity was high"}, {"en": "vulnerable (adj)", "vn": "dễ bị tổn thương", "ex": "animals are more vulnerable to extremes of temperature"}, {"en": "integrate (v)", "vn": "tích hợp, hoà nhập", "ex": "integrate memories into longer-term storage"}, {"en": "dreamscape (n)", "vn": "khung cảnh trong giấc mơ", "ex": "let alone imagine their dreamscapes"}, {"en": "thrash around", "vn": "vùng vẫy dữ dội", "ex": "Costello thrashed around"}, {"en": "predator (n)", "vn": "kẻ săn mồi", "ex": "as though he were being attacked by a predator"}, {"en": "dominant (adj)", "vn": "chiếm ưu thế, chủ đạo", "ex": "vision is the dominant sense for many humans"}, {"en": "vibration (n)", "vn": "sự rung động", "ex": "spiders rely much more on vibrations"}]}, {"id": "r2", "group": "reading", "title": "Reading Passage 2", "subtitle": "Câu 14-26 · Mapungubwe", "theme": "Bài đọc khảo cổ học về vương quốc Mapungubwe ở miền nam châu Phi (thế kỷ 11-13), cấu trúc xã hội, thương mại và các hiện vật khảo cổ được tìm thấy.", "questions": [{"num": 14, "q": "Đoạn nào nhắc đến sự KHÔNG CHẮC CHẮN về công dụng của một số đồ vật", "answer": "E", "en": "The figures may have been used in ceremonies as offerings to ancestors, but their precise function is not known.", "vn": "Các bức tượng nhỏ có thể được dùng trong nghi lễ để dâng cúng tổ tiên, nhưng chức năng chính xác của chúng chưa được biết rõ.", "note": ""}, {"num": 15, "q": "Đoạn nào nói yếu tố khí hậu làm trầm trọng thêm vấn đề của Mapungubwe", "answer": "G", "en": "a situation that may have been brought to a crisis point by a series of droughts.", "vn": "tình trạng đó có thể đã lên đến đỉnh điểm khủng hoảng do một loạt các đợt hạn hán.", "note": ""}, {"num": 16, "q": "Đoạn nào nhắc đến nơi các thành viên hoàng tộc có thể đã sinh sống", "answer": "C", "en": "There were some grander residences dotted around the outskirts of Babandyanalo, and these probably belonged to male relatives of the king.", "vn": "có một số dinh thự lớn hơn rải rác quanh vùng ngoại ô Babandyanalo, và những nơi này có lẽ thuộc về những người họ hàng nam của nhà vua.", "note": ""}, {"num": 17, "q": "Đoạn nào nhắc đến những người mang hàng hoá bằng đường biển", "answer": "D", "en": "traded with merchants travelling from India by sea.", "vn": "giao thương với các thương nhân đi từ Ấn Độ bằng đường biển.", "note": ""}, {"num": 18, "q": "Đoạn nào ước tính quy mô dân số của cộng đồng Mapungubwe", "answer": "B", "en": "The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people.", "vn": "tổng dân số Mapungubwe vào thời kỳ đỉnh cao giữa thế kỷ 13 khoảng 5.000 người.", "note": ""}, {"num": 19, "q": "Đoạn nào nhắc đến việc nông sản được đem trao đổi lấy hàng hoá khác", "answer": "A", "en": "cattle herding and other types of farming brought plenty of food and a surplus that could be traded for needed goods.", "vn": "chăn nuôi gia súc và các hình thức canh tác khác mang lại nhiều lương thực và phần dư thừa có thể đem trao đổi lấy hàng hoá cần thiết.", "note": ""}, {"num": "20 & 21", "q": "Hai thông tin nào về vàng được nhắc đến (chọn 2)", "answer": "B, D", "en": "These objects were all found at the royal burial site ... A type of decoration, found nowhere else except Great Zimbabwe.", "vn": "những đồ vật này đều được tìm thấy tại khu chôn cất hoàng gia ... Một kiểu trang trí chỉ tìm thấy duy nhất ở Great Zimbabwe (ngoài Mapungubwe).", "note": "B = đồ vàng đặt gần nơi chôn cất vua; D = cách trang trí vàng cũng có ở vương quốc khác."}, {"num": 22, "q": "Sự ... của cộng đồng thể hiện qua số lượng gốm sứ chuyên nghiệp", "answer": "prosperity", "en": "pottery was produced on a scale large enough to suggest the presence of professional potters, and is another indicator of the prosperity of Mapungubwe society.", "vn": "gốm sứ được sản xuất với quy mô đủ lớn để cho thấy có sự hiện diện của thợ gốm chuyên nghiệp, đây là một chỉ dấu khác cho sự thịnh vượng của xã hội Mapungubwe.", "note": ""}, {"num": 23, "q": "Các vật tìm được khác gồm đĩa tròn, ... và tượng động vật", "answer": "whistles", "en": "There are also ceramic discs, and whistles.", "vn": "còn có các đĩa gốm tròn và còi (tù và) gốm.", "note": ""}, {"num": 24, "q": "Tượng người có ... kéo dài", "answer": "bodies", "en": "small figures of highly stylised humans with elongated bodies and short limbs.", "vn": "các tượng nhỏ hình người cách điệu cao với thân hình kéo dài và tay chân ngắn.", "note": ""}, {"num": 25, "q": "Có thể dùng trong nghi lễ để tôn vinh ...", "answer": "ancestors", "en": "The figures may have been used in ceremonies as offerings to ancestors.", "vn": "những bức tượng có thể được dùng trong nghi lễ để dâng cúng tổ tiên.", "note": ""}, {"num": 26, "q": "Đồ ... làm từ kim loại địa phương cũng được tìm thấy", "answer": "jewellery", "en": "Other discoveries include small jewellery items made from locally sourced copper.", "vn": "các phát hiện khác gồm đồ trang sức nhỏ làm từ đồng khai thác tại địa phương.", "note": ""}], "vocab": [{"en": "plateau (n)", "vn": "cao nguyên", "ex": "a large sandstone plateau"}, {"en": "surplus (n)", "vn": "phần dư thừa", "ex": "a surplus that could be traded"}, {"en": "domesticated (adj)", "vn": "đã thuần hoá", "ex": "an increase in the number of domesticated cattle"}, {"en": "palisade (n)", "vn": "hàng rào cọc gỗ/sắt phòng thủ", "ex": "surrounded by a wooden palisade"}, {"en": "demarcated (adj)", "vn": "được phân định rõ ranh giới", "ex": "buried in a demarcated area"}, {"en": "outskirts (n)", "vn": "vùng ngoại ô, ven rìa", "ex": "dotted around the outskirts"}, {"en": "ivory (n)", "vn": "ngà voi", "ex": "ivory elephant tusks"}, {"en": "monopolise (v)", "vn": "độc quyền hoá", "ex": "control and even monopolise these connections"}, {"en": "stylised (adj)", "vn": "cách điệu", "ex": "highly stylised humans"}, {"en": "sceptre (n)", "vn": "vương trượng", "ex": "may have been a sceptre"}, {"en": "intrinsic value", "vn": "giá trị nội tại", "ex": "gold had an intrinsic value of its own"}, {"en": "decline (n/v)", "vn": "sự suy tàn, suy giảm", "ex": "already in decline by the late 13th century"}]}, {"id": "r3", "group": "reading", "title": "Reading Passage 3", "subtitle": "Câu 27-40 · Artificial Intelligence", "theme": "Bài đọc học thuật phân tích tâm lý 'AI solutionism', những thách thức khi triển khai AI trong khu vực công, y tế và luật pháp, và bài học rút ra.", "questions": [{"num": 27, "q": "Người viết đang làm gì trong đoạn 1?", "answer": "B - Mô tả nhận thức của công chúng về AI", "en": "hysteria about the future of artificial intelligence (AI) is everywhere ... you might think that we are already living in a future where AI has infiltrated every aspect of society.", "vn": "sự cuồng loạn về tương lai của trí tuệ nhân tạo (AI) xuất hiện khắp nơi ... bạn có thể nghĩ rằng chúng ta đã đang sống trong một tương lai nơi AI đã thâm nhập mọi mặt của xã hội.", "note": ""}, {"num": 28, "q": "Khi bàn về 'AI solutionism' ở đoạn 2, người viết", "answer": "A - Chỉ ra một rủi ro", "en": "this mindset actually jeopardises the value of machine intelligence by disregarding important AI safety principles and setting unrealistic expectations.", "vn": "tư duy này thực sự gây nguy hiểm cho giá trị của trí tuệ máy móc bằng cách bỏ qua các nguyên tắc an toàn AI quan trọng và đặt ra kỳ vọng phi thực tế.", "note": ""}, {"num": 29, "q": "Ở đoạn 4, người viết cho rằng nhiều chính trị gia có thể", "answer": "C - Không nhận thức được thách thức khi triển khai các sáng kiến AI quốc gia", "en": "they fail to realise the complexity around deploying advanced machine learning systems in the real world.", "vn": "họ không nhận ra sự phức tạp trong việc triển khai các hệ thống học máy tiên tiến vào thực tế.", "note": ""}, {"num": 30, "q": "Việc thêm mạng nơ-ron có thể thúc đẩy sự ...", "answer": "F - equality (bình đẳng)", "en": "adding a neural network to a system of government does not mean it will be instantaneously more inclusive or fair.", "vn": "việc thêm mạng nơ-ron vào một hệ thống chính phủ không có nghĩa là nó sẽ ngay lập tức trở nên hoà nhập hoặc công bằng hơn.", "note": ""}, {"num": 31, "q": "Khu vực công chưa có ... dữ liệu cần thiết", "answer": "G - framework (khung/hạ tầng)", "en": "the public sector typically does not have the appropriate data infrastructure to support advanced machine learning.", "vn": "khu vực công thường không có hạ tầng dữ liệu phù hợp để hỗ trợ học máy tiên tiến.", "note": ""}, {"num": 32, "q": "Mỗi người cần có ... để truy cập dữ liệu liên quan", "answer": "I - approval (sự cho phép)", "en": "data is spread across different government departments that each require special permissions to be accessed.", "vn": "dữ liệu nằm rải rác ở nhiều cơ quan chính phủ khác nhau, mỗi nơi đều yêu cầu quyền truy cập đặc biệt.", "note": ""}, {"num": 33, "q": "Ít nhân viên khu vực công có ... để tận dụng AI", "answer": "C - skills (kỹ năng)", "en": "the public sector typically lacks the human talent with the right technological capabilities to fully reap the benefits of machine intelligence.", "vn": "khu vực công thường thiếu nhân lực có năng lực công nghệ phù hợp để tận dụng tối đa lợi ích của trí tuệ máy móc.", "note": ""}, {"num": 34, "q": "Các chuyên gia y tế ít tin vào ... của chương trình AI", "answer": "A - reliability (độ tin cậy)", "en": "human experts found it hard to trust the machine. As a result, the AI programme was abandoned in most hospitals.", "vn": "các chuyên gia thấy khó tin tưởng vào máy móc. Kết quả là chương trình AI bị loại bỏ ở hầu hết các bệnh viện.", "note": ""}, {"num": 35, "q": "Thuật toán phản ánh những ... hiện có trong ngành luật", "answer": "D - prejudices (định kiến)", "en": "The system was found to amplify structural racial discrimination and was later abandoned.", "vn": "hệ thống bị phát hiện làm khuếch đại sự phân biệt chủng tộc mang tính cấu trúc và sau đó bị loại bỏ.", "note": ""}, {"num": 36, "q": "Đề xuất của Stuart Russell về việc dùng AI là không thực tế", "answer": "NO", "en": "Stuart Russell ... has long advocated a more sensible and realistic approach that focuses on simple everyday applications of AI.", "vn": "Stuart Russell ... từ lâu đã ủng hộ một cách tiếp cận hợp lý và thực tế hơn, tập trung vào các ứng dụng AI đơn giản trong đời sống hằng ngày.", "note": "Ông ủng hộ hướng đi THỰC TẾ, trái ngược với 'impractical' (phi thực tế)."}, {"num": 37, "q": "Quan điểm của Rodney Brooks bị những người ủng hộ AI chỉ trích bất công", "answer": "NOT GIVEN", "en": "Rodney Brooks ... writes that 'almost all innovations in robotics and AI take far, far, longer to be really widely deployed than people ... imagine'.", "vn": "Rodney Brooks ... viết rằng 'hầu hết các đổi mới trong robot học và AI đều mất thời gian lâu hơn rất nhiều để được ứng dụng rộng rãi so với những gì mọi người tưởng tượng'.", "note": "Bài không đề cập đến việc quan điểm của Brooks bị chỉ trích."}, {"num": 38, "q": "Ngày nay, việc bảo vệ hệ thống AI luôn được tính đến khi thiết lập", "answer": "NO", "en": "AI security remains an often overlooked topic when machine learning systems are installed.", "vn": "an ninh AI vẫn là một chủ đề thường bị bỏ qua khi triển khai các hệ thống học máy.", "note": ""}, {"num": 39, "q": "Để hưởng lợi từ AI và giảm thiểu tác hại, ta cần tìm hiểu mối lo ngại của mọi người", "answer": "YES", "en": "we need to have a discussion about AI ethics and the distrust that many people have towards machine learning.", "vn": "chúng ta cần thảo luận về đạo đức AI và sự nghi ngại mà nhiều người có đối với học máy.", "note": ""}, {"num": 40, "q": "Tiêu đề phụ phù hợp nhất cho bài đọc 3", "answer": "B - Vì sao AI có thể không phải là câu trả lời cho mọi vấn đề", "en": "(Overall message of the whole passage: AI has limits and is not a universal solution.)", "vn": "(Thông điệp xuyên suốt của cả bài: AI có giới hạn và không phải là giải pháp cho mọi vấn đề.)", "note": ""}], "vocab": [{"en": "hysteria (n)", "vn": "sự cuồng loạn, phản ứng thái quá", "ex": "hysteria about the future of AI is everywhere"}, {"en": "infiltrate (v)", "vn": "thâm nhập, len lỏi vào", "ex": "AI has infiltrated every aspect of society"}, {"en": "jeopardise (v)", "vn": "gây nguy hiểm cho", "ex": "this mindset actually jeopardises the value of AI"}, {"en": "burgeoning (adj)", "vn": "đang phát triển nhanh chóng", "ex": "the burgeoning machine-learning sector"}, {"en": "adversarial attack (n)", "vn": "tấn công đối kháng (trong AI)", "ex": "AI is extremely susceptible to adversarial attacks"}, {"en": "bureaucracy (n)", "vn": "thủ tục hành chính, quan liêu", "ex": "buried in bureaucracy"}, {"en": "reap the benefits", "vn": "gặt hái lợi ích", "ex": "reap the benefits of machine intelligence"}, {"en": "sensationalism (n)", "vn": "sự giật gân, thổi phồng", "ex": "the sensationalism over AI"}, {"en": "amplify (v)", "vn": "khuếch đại, làm tăng thêm", "ex": "amplify structural racial discrimination"}, {"en": "discrimination (n)", "vn": "sự phân biệt đối xử", "ex": "racial discrimination"}, {"en": "distrust (n)", "vn": "sự nghi ngờ, thiếu tin tưởng", "ex": "the distrust that many people have towards machine learning"}]}];
+</script>
+<script>
+(function(){
+  "use strict";
+
+  const mainEl = document.getElementById("main");
+  const tabsListening = document.getElementById("tabs-listening");
+  const tabsReading = document.getElementById("tabs-reading");
+  const tabsVocab = document.getElementById("tabs-vocab");
+
+  // ---- build tabs ----
+  DATA.forEach(sec=>{
+    const btn = document.createElement("button");
+    btn.className = "tab-btn";
+    btn.dataset.target = sec.id;
+    btn.textContent = sec.title.replace("Listening ","").replace("Reading ","");
+    btn.onclick = ()=>showPanel(sec.id);
+    (sec.group === "listening" ? tabsListening : tabsReading).appendChild(btn);
+  });
+  const vocabBtn = document.createElement("button");
+  vocabBtn.className = "tab-btn";
+  vocabBtn.dataset.target = "vocabhub";
+  vocabBtn.textContent = "📚 Từ vựng cần học";
+  vocabBtn.onclick = ()=>showPanel("vocabhub");
+  tabsVocab.appendChild(vocabBtn);
+  document.getElementById("guide-tab-btn").addEventListener("click", ()=>showPanel("guide"));
+
+  // ---- build question panels ----
+  DATA.forEach(sec=>{
+    const panel = document.createElement("section");
+    panel.className = "panel";
+    panel.id = "panel-"+sec.id;
+
+    const head = document.createElement("div");
+    head.className = "section-head";
+    head.innerHTML = `<div class="eyebrow sans">${sec.group==="listening"?"Listening":"Reading"} · ${sec.subtitle}</div>
+      <h2>${sec.title}</h2>
+      <div class="theme">${sec.theme}</div>
+      ${sec.strategy ? `<div class="strategy-box"><span class="sk">Cách tiếp cận dạng bài này</span>${sec.strategy}</div>` : ""}`;
+    panel.appendChild(head);
+
+    sec.questions.forEach(q=>{
+      const card = document.createElement("div");
+      card.className = "q-card";
+      const btnId = "rv-"+sec.id+"-"+String(q.num).replace(/\W/g,"");
+      card.innerHTML = `
+        <div class="q-top">
+          <div class="q-num sans">${q.num}</div>
+          <div class="q-body">
+            <div class="q-text">${q.q}</div>
+            ${(q.keyword || q.signal) ? `<div class="hint-box">
+                ${q.keyword ? `<div class="hk">🎯 Từ khóa cần nghe: ${q.keyword}</div>` : ""}
+                ${q.signal ? `<div class="hs">${q.signal}</div>` : ""}
+              </div>` : ""}
+            <button class="reveal-btn" id="${btnId}">👁 Xem đáp án &amp; bằng chứng</button>
+            <div class="answer-wrap" id="wrap-${btnId}">
+              <div class="answer-line">✓ ${q.answer}</div>
+              <div class="evidence">
+                <div class="tag sans">Bằng chứng trong bài</div>
+                <div class="en">"${q.en}"</div>
+                <div class="vn">${q.vn}</div>
+              </div>
+              ${q.note ? `<div class="note">${q.note}</div>` : ""}
+            </div>
+          </div>
+        </div>`;
+      panel.appendChild(card);
+      card.querySelector("#"+CSS.escape(btnId)).addEventListener("click", (e)=>{
+        const wrap = document.getElementById("wrap-"+btnId);
+        wrap.classList.toggle("open");
+        e.target.textContent = wrap.classList.contains("open") ? "🙈 Ẩn đáp án" : "👁 Xem đáp án & bằng chứng";
+      });
+    });
+
+    // vocab strip
+    const vs = document.createElement("div");
+    vs.className = "vocab-strip";
+    vs.innerHTML = `<h3 class="sans">Từ vựng nên học trong phần này (${sec.vocab.length} từ)</h3>
+      <div class="vocab-grid">
+        ${sec.vocab.map(v=>`<div class="vocab-chip">
+            <div class="w">${v.en}</div>
+            <div class="m">${v.vn}</div>
+            <div class="e">"${v.ex}"</div>
+          </div>`).join("")}
+      </div>`;
+    panel.appendChild(vs);
+
+    mainEl.appendChild(panel);
+  });
+
+  // ---- vocab hub panel ----
+  const vocabPanel = document.createElement("section");
+  vocabPanel.className = "panel";
+  vocabPanel.id = "panel-vocabhub";
+  vocabPanel.innerHTML = `
+    <div class="section-head">
+      <div class="eyebrow sans">Ôn tập ngắt quãng</div>
+      <h2>Bộ thẻ từ vựng Test 2</h2>
+      <div class="theme">Bấm vào thẻ để lật xem nghĩa. Đánh dấu "Đã thuộc" / "Chưa thuộc" — bộ lọc sẽ giúp bạn tập trung ôn lại đúng những từ mình còn hay quên, lặp lại nhiều lần cho tới khi nhớ.</div>
+    </div>
+    <div class="vhub-toolbar">
+      <button class="filter-btn active sans" data-filter="all">Tất cả</button>
+      <button class="filter-btn sans" data-filter="unlearned">🔴 Chưa thuộc</button>
+      <button class="filter-btn sans" data-filter="learned">🟢 Đã thuộc</button>
+      <span class="vhub-stats sans" id="vhub-stats"></span>
+      <button class="reset-btn sans" id="vhub-reset">Đặt lại tiến trình</button>
+    </div>
+    <div class="card-grid" id="vhub-grid"></div>
+    <div class="empty-state" id="vhub-empty" style="display:none;">
+      <div class="big">🎉</div>
+      <div>Không còn từ nào trong bộ lọc này!</div>
+    </div>
+  `;
+  mainEl.appendChild(vocabPanel);
+
+  function showPanel(id){
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    document.getElementById("panel-"+id).classList.add("active");
+    document.querySelector('.tab-btn[data-target="'+id+'"]').classList.add("active");
+    window.scrollTo({top:0,behavior:"instant"});
+    if(id==="vocabhub") renderVocabHub();
+  }
+
+  // ---- flatten vocab list with stable ids ----
+  const allVocab = [];
+  DATA.forEach(sec=>{
+    sec.vocab.forEach((v,i)=>{
+      allVocab.push({
+        id: sec.id+"-v"+i,
+        src: sec.title,
+        en: v.en, vn: v.vn, ex: v.ex
+      });
+    });
+  });
+
+  let learnedSet = new Set();
+  let storageReady = false;
+
+  async function loadProgress(){
+    try{
+      const res = await window.storage.get("vocab-learned-test2", false);
+      if(res && res.value){
+        const arr = JSON.parse(res.value);
+        learnedSet = new Set(arr);
+      }
+    }catch(e){ /* key not found yet, that's fine */ }
+    storageReady = true;
+    if(document.getElementById("panel-vocabhub").classList.contains("active")) renderVocabHub();
+  }
+  async function saveProgress(){
+    try{
+      await window.storage.set("vocab-learned-test2", JSON.stringify(Array.from(learnedSet)), false);
+    }catch(e){ console.error("Storage error", e); }
+  }
+  loadProgress();
+
+  let currentFilter = "all";
+
+  function renderVocabHub(){
+    const grid = document.getElementById("vhub-grid");
+    const empty = document.getElementById("vhub-empty");
+    grid.innerHTML = "";
+    let list = allVocab;
+    if(currentFilter === "learned") list = allVocab.filter(v=>learnedSet.has(v.id));
+    if(currentFilter === "unlearned") list = allVocab.filter(v=>!learnedSet.has(v.id));
+
+    document.getElementById("vhub-stats").innerHTML =
+      `<b>${learnedSet.size}</b> / ${allVocab.length} từ đã thuộc`;
+
+    if(list.length === 0){
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+
+    list.forEach(v=>{
+      const isLearned = learnedSet.has(v.id);
+      const card = document.createElement("div");
+      card.className = "flash" + (isLearned ? " learned" : "");
+      card.innerHTML = `
+        ${isLearned ? '<div class="learned-badge">✅</div>' : ""}
+        <div class="src sans">${v.src.replace("Listening ","Nghe · ").replace("Reading ","Đọc · ")}</div>
+        <div class="front">${v.en}</div>
+        <div class="back">
+          <div>${v.vn}</div>
+          <div class="ex">"${v.ex}"</div>
+        </div>
+        <div class="hint sans">Bấm để xem nghĩa</div>
+        <div class="flash-actions">
+          <button class="fa-btn no sans">Chưa thuộc</button>
+          <button class="fa-btn yes sans">Đã thuộc</button>
+        </div>
+      `;
+      card.addEventListener("click", (e)=>{
+        if(e.target.closest(".fa-btn")) return;
+        card.classList.toggle("flipped");
+      });
+      card.querySelector(".fa-btn.yes").addEventListener("click", (e)=>{
+        e.stopPropagation();
+        learnedSet.add(v.id);
+        saveProgress();
+        renderVocabHub();
+      });
+      card.querySelector(".fa-btn.no").addEventListener("click", (e)=>{
+        e.stopPropagation();
+        learnedSet.delete(v.id);
+        saveProgress();
+        renderVocabHub();
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  document.querySelectorAll(".filter-btn").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      document.querySelectorAll(".filter-btn").forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+      currentFilter = b.dataset.filter;
+      renderVocabHub();
+    });
+  });
+  document.getElementById("vhub-reset").addEventListener("click", ()=>{
+    if(confirm("Xoá toàn bộ tiến trình học từ vựng của Test 2?")){
+      learnedSet = new Set();
+      saveProgress();
+      renderVocabHub();
+    }
+  });
+
+  // ---- init ----
+  showPanel("guide");
+})();
+</script>
+</body>
+</html>
